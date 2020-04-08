@@ -33,6 +33,7 @@ class DataBase_Handler():
         face_encoding = face_recognition.face_encodings(image)[0]
         DataBase.Face_names.append(Name)
         DataBase.Face_encodings.append(face_encoding)
+        Console.Log("New entry: ",Name," _ ",Face_path)
     def Delete_entry(Name):
         pass
 
@@ -53,7 +54,7 @@ class Nhan_dang():
         process_this_frame = True
         count = 0
         frame_count = 0
-        start_cooldown = 0.0f
+        start_cooldown = 0.0
         while self.Running:
             ret, frame = video_capture.read()
             small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
@@ -66,7 +67,7 @@ class Nhan_dang():
                 self.face_locations = face_recognition.face_locations(rgb_small_frame)
                 self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
                 if not frame_count == 0 :
-                    frame_count = 0 if time.time() - start_cooldown > 3f else frame_count - 1
+                    frame_count = 0 if time.time() - start_cooldown > 3 else frame_count - 1
                 
                 self.face_names = []
                 for face_encoding in self.face_encodings:
@@ -100,8 +101,17 @@ class Nhan_dang():
             process_this_frame = not process_this_frame
 
 
-            
+           
 
         video_capture.release()
         cv2.destroyAllWindows()
-Nhan_dang()
+class Main():
+     def __init__(self):
+        files =  os.listdir("./IMG_DataBase/")
+        for file in files:
+            data = file.split(".")[0]
+            Lop = data.split("_")[0]
+            STT = data.split("_")[1]
+            DataBase_Handler.New_entry(STT,"./IMG_DataBase/"+ file)
+            Nhan_dang()
+Main()
