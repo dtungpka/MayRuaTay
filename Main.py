@@ -50,6 +50,7 @@ class Nhan_dang():
         self.Bat_dau()
         
     def Bat_dau(self):
+        
         video_capture = cv2.VideoCapture(0)
         process_this_frame = True
         count = 0
@@ -80,7 +81,7 @@ class Nhan_dang():
                         name = DataBase.Face_names[best_match_index]
                     self.face_names.append(name)
                     Console.Log("Person: ",self.face_names,"Dist",face_distances)
-                if self.face_encodings and frame_count == 0:
+                if self.face_encodings :
                         for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
                             top *= 4
                             right *= 4
@@ -94,7 +95,7 @@ class Nhan_dang():
                     
                         # Display the resulting image
                         #cv2.imshow('Video', frame)
-                        cv2.imwrite("Frame"+str(count)+".png",frame)
+                        cv2.imwrite("./Capture/Frame"+str(count)+".png",frame)
                         count +=1
                         frame_count = 50
                         start_cooldown = time.time()
@@ -112,6 +113,6 @@ class Main():
             data = file.split(".")[0]
             Lop = data.split("_")[0]
             STT = data.split("_")[1]
-            DataBase_Handler.New_entry(STT,"./IMG_DataBase/"+ file)
+            DataBase_Handler.New_entry(STT+"_"+Lop,"./IMG_DataBase/"+ file)
             Nhan_dang()
 Main()
