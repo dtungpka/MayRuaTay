@@ -125,3 +125,4 @@ dmypy.json
 .pyre/
 *.png
 *.xlsx
+FB_chat_test.py
