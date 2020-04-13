@@ -97,7 +97,7 @@ class Nhan_dang():
                         if DataBase.Thong_tin_hs[best_match_index] not in DataBase.Co_mat:
                             DataBase.Co_mat.append(DataBase.Thong_tin_hs[best_match_index])
                     self.face_STTs.append(STT)
-                    Console.Log("ID hoc sinh: ",best_match_index,"Thong tin: ",DataBase.Thong_tin_hs[best_match_index].Ten,DataBase.Thong_tin_hs[best_match_index].Lop)
+                    Console.Log("ID hoc sinh: ",best_match_index,"Thong tin: ",STT)
                 if self.face_encodings and frame_count == 0 and STT == "Unknown":
                         for (top, right, bottom, left), STT in zip(self.face_locations, self.face_STTs):
                             top *= 4
