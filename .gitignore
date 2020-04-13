@@ -126,3 +126,4 @@ dmypy.json
 *.png
 *.xlsx
 FB_chat_test.py
+test.py
