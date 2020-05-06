@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9f856a38-88ce-4b36-a0e5-ef3457b03f62</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>FB_chat_test.py</StartupFile>
+    <StartupFile>ChupAnh.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ChupAnh.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FB_chat_test.py">
       <SubType>Code</SubType>
     </Compile>
